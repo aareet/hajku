@@ -55,12 +55,12 @@
 {% block additional_scripts %}
   <script>
   function validateName(x, numSyl) {
-    var re = /[a-zA-Z]$/;
-    if (! re.test(document.getElementById(x).value)) {
-        document.getElementById(x).style.background = '#e35152';
-        document.getElementById('InputError').style.display = "block";
-        return false;
-    }
+    //var re = /[a-zA-Z]$/;
+    //if (! re.test(document.getElementById(x).value)) {
+    //    document.getElementById(x).style.background = '#e35152';
+    //    document.getElementById('InputError').style.display = "block";
+    //    return false;
+    //}
     
     var textval = document.getElementById(x).value;
     var words = textval.split(" ");
