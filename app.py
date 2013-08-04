@@ -35,7 +35,7 @@ def submit_hajku():
 def view_hajku():
     objid = request.args.get("hajku")
 
-    myhaiku = db.haikus.find_one({"_id" : ObjectId(objid)})
+    myhaiku = db.haikus.find_one({"_id": ObjectId(objid)})
     if not myhaiku:
         return redirect("/")
 
@@ -43,8 +43,6 @@ def view_hajku():
     for line in ["line1", "line2", "line3"]:
         haiku[line] = myhaiku[line]
         print line
-
-
 
     return render_template("view.html", haiku=haiku)
     #return json.dumps(myhaiku, default=json_util.default)
