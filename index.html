@@ -2,6 +2,8 @@
 <!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 
+<!-- http://jsfiddle.net/gdHDY/17/ -->
+
 <head>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
@@ -12,89 +14,71 @@
   
 
   <script src="js/vendor/custom.modernizr.js"></script>
+  <script>
+  function validateName(x, numSyl) {
+    var re = /[a-zA-Z]$/;
+    if (! re.test(document.getElementById(x).value)) {
+        document.getElementById(x).style.background = '#e35152';
+        document.getElementById('InputError').style.display = "block";
+        return false;
+    }
+    
+    var textval = document.getElementById(x).value;
+    var words = textval.split(" ");
+    var countSyl = 0;
+    for (var i = 0; i < words.length; i++) {
+        countSyl += new_count(words[i]);
+    }
+    if (countSyl == numSyl) {
+        document.getElementById(x).style.background = '#ccffcc';
+        document.getElementById(x + 'Error').style.display = "none";
+        return true;
+    } else {
+        document.getElementById(x).style.background = '#e35152';
+        document.getElementById(x + 'Error').style.display = "block";
+        return false;
+    }
+}
+
+function new_count(word) {
+    word = word.toLowerCase(); //word.downcase!
+    if (word.length <= 3) {
+        return 1;
+    } //return 1 if word.length <= 3
+    word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, ''); //word.sub!(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
+    word = word.replace(/^y/, ''); //word.sub!(/^y/, '')
+    return word.match(/[aeiouy]{1,2}/g).length; //word.scan(/[aeiouy]{1,2}/).size
+}
+
+  </script>
 
 </head>
 <body>
+    <div class="row">
+        <div class="large-12 columns">
+            <form action="">
+                <fieldset>
+                    <div class="row">
+                        <div class="large-6 columns">
+                            <input type="text" placeholder="Enter Line 1" name="line1" id="line1" onblur="validateName(name, 5)"/>
+                        </div>
+                        <div class="large-6 columns">
+                            <span id="line1Error" class="inline" style="display: none;">You may not have 5 syllables in this line</span>
+                        </div>
+                    </div>
+                    
+                    <input type="text" placeholder="Enter Line 2" name="line2" id="line2" onblur="validateName(name, 7)" />
+                    <span id="line2Error" style="display: none;">You may not have 7 syllables in this line</span>
+                    
+                    <input type="text" placeholder="Enter Line 3" name="line3" id="line3" onblur="validateName(name, 5)" />
+                    <span id="line3Error" style="display: none;">You may not have 5 syllables in this line</span>
 
-	<div class="row">
-		<div class="large-12 columns">
-			<h2>Welcome to Foundation</h2>
-			<p>This is version 4.3.1.</p>
-			<hr />
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="large-8 columns">
-			<h3>The Grid</h3>
-
-			<!-- Grid Example -->
-			<div class="row">
-				<div class="large-12 columns">
-					<div class="panel">
-						<p>This is a twelve column section in a row. Each of these includes a div.panel element so you can see where the columns are - it's not required at all for the grid.</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="large-6 columns">
-					<div class="panel">
-						<p>Six columns</p>
-					</div>
-				</div>
-				<div class="large-6 columns">
-					<div class="panel">
-						<p>Six columns</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="large-4 columns">
-					<div class="panel">
-						<p>Four columns</p>
-					</div>
-				</div>
-				<div class="large-4 columns">
-					<div class="panel">
-						<p>Four columns</p>
-					</div>
-				</div>
-				<div class="large-4 columns">
-					<div class="panel">
-						<p>Four columns</p>
-					</div>
-				</div>
-			</div>
-
-			<h3>Buttons</h3>
-
-      <div class="row">
-        <div class="large-6 columns">
-          <p><a href="#" class="small button">Small Button</a></p>
-          <p><a href="#" class="button">Medium Button</a></p>
-          <p><a href="#" class="large button">Large Button</a></p>
+                    <input type="submit" class="button" id="submit" name="submit" value="Submit" />
+                    <span id="InputError" style="display: none;">Only letters are allowed</span>
+                </fieldset>
+            </form>
         </div>
-        <div class="large-6 columns">
-          <p><a href="#" class="small alert button">Small Alert Button</a></p>
-          <p><a href="#" class="success button">Medium Success Button</a></p>
-          <p><a href="#" class="large secondary button">Large Secondary Button</a></p>
-        </div>
-      </div>
-		</div>
-
-		<div class="large-4 columns">
-			<h4>Getting Started</h4>
-			<p>We're stoked you want to try Foundation! To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
-
-			<h4>Other Resources</h4>
-			<p>Once you've exhausted the fun in this document, you should check out:</p>
-			<ul class="disc">
-				<li><a href="http://foundation.zurb.com/docs">Foundation Documentation</a><br />Everything you need to know about using the framework.</li>
-				<li><a href="http://github.com/zurb/foundation">Foundation on Github</a><br />Latest code, issue reports, feature requests and more.</li>
-				<li><a href="http://twitter.com/foundationzurb">@foundationzurb</a><br />Ping us on Twitter if you have questions. If you build something with this we'd love to see it (and send you a totally boss sticker).</li>
-			</ul>
-		</div>
-	</div>
+    </div>
 
   <script>
   document.write('<script src=' +
