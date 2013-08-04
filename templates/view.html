@@ -1,1 +1,11 @@
 {% extends "base.html" %}
+{% block main %}
+
+    {% for line in haiku %}
+    	<div class="row" align="center">
+    		<div class="large-12 columns">
+    			<span>{{haiku[line]}}</span>
+    		</div>
+    	</div>
+    {% endfor %}
+{% endblock %}

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import pymongo
 import os
-from bson import ObjectId
+from bson import ObjectId, json_util
 import json
 import urllib
 from datetime import datetime
@@ -9,6 +9,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 db = pymongo.MongoClient(os.getenv('MONGOHQ_URL')).hajku
+
 
 @app.route('/', methods=["GET"])
 def write_hajku():
@@ -19,22 +20,32 @@ def write_hajku():
 def submit_hajku():
     if request.method == "POST":
         hajku = {}
-        hajku["line1"] = request.form["line1"]
-        hajku["line2"] = request.form["line2"]
-        hajku["line3"] = request.form["line3"]
+
+        for line in ["line1", "line2", "line3"]:
+            hajku[line] = str(request.form[line])
+
         hajku["created_on"] = datetime.utcnow()
-        
         objectid = db.haikus.save(hajku)
         print str(objectid)
 
         return redirect("/view?hajku=%s" % str(objectid))
 
+
 @app.route('/view', methods=["GET"])
 def view_hajku():
     objid = request.args.get("hajku")
 
+    myhaiku = db.haikus.find_one({"_id":ObjectId(objid)})
 
-    return objid
+    haiku = {}
+    for line in ["line1", "line2", "line3"]:
+        haiku[line] = myhaiku[line]
+
+    if not myhaiku:
+        return redirect("/")
+
+    return render_template("view.html", haiku=haiku)
+    #return json.dumps(myhaiku, default=json_util.default)
 
 if __name__ == '__main__':
     app.debug = True
