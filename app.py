@@ -8,7 +8,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-db = pymongo.MongoClient(os.getenv('MONGOHQ_URL')).hajkus
+db = pymongo.MongoClient(os.getenv('MONGOHQ_URL')).hajku
 
 @app.route('/', methods=["GET"])
 def write_hajku():
@@ -32,6 +32,7 @@ def submit_hajku():
 @app.route('/view', methods=["GET"])
 def view_hajku():
     objid = request.args.get("hajku")
+
 
     return objid
 
