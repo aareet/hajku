@@ -14,6 +14,50 @@
   
 
   <script src="js/vendor/custom.modernizr.js"></script>
+
+
+</head>
+<body>
+    <div class="row" align="center">
+        <div class="large-6 columns">
+            <form action="">
+                <fieldset>
+                    <div class="row">
+                        <div class="large-11 columns">
+                            <input type="text" placeholder="Enter Line 1" name="line1" id="line1" onblur="validateName(name, 5)"/>
+                        </div>
+                        <div class="small-1 columns">
+                          <label for="line1" id="line1Syllables" class="right inline"></label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="large-11 columns">
+                            <input type="text" placeholder="Enter Line 2" name="line2" id="line2" onblur="validateName(name, 7)"/>
+                        </div>
+                        <div class="small-1 columns">
+                          <label for="right-label" id="line2Syllables" class="right inline"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-11 columns">
+                            <input type="text" placeholder="Enter Line 3" name="line3" id="line3" onblur="validateName(name, 5)"/>
+                        </div>
+                        <div class="small-1 columns">
+                          <label for="right-label" id="line3Syllables" class="right inline"></label>
+                        </div>
+                    </div>
+                    <input type="submit" class="button" id="submit" name="submit" value="Submit" />
+                    <div class="row">
+                        <div class="large 11 columns">
+                            <span id="InputError" style="display: none;">Only letters are allowed</span>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
   <script>
   function validateName(x, numSyl) {
     var re = /[a-zA-Z]$/;
@@ -31,11 +75,11 @@
     }
     if (countSyl == numSyl) {
         document.getElementById(x).style.background = '#ccffcc';
-        document.getElementById(x + 'Error').style.display = "none";
+        document.getElementById(x + 'Syllables').innerHTML = countSyl + "/" + numSyl;
         return true;
     } else {
         document.getElementById(x).style.background = '#e35152';
-        document.getElementById(x + 'Error').style.display = "block";
+        document.getElementById(x + 'Syllables').innerHTML = countSyl + "/" + numSyl;
         return false;
     }
 }
@@ -51,34 +95,6 @@ function new_count(word) {
 }
 
   </script>
-
-</head>
-<body>
-    <div class="row" align="center">
-        <div class="large-6 columns">
-            <form action="">
-                <fieldset>
-                    <div class="row">
-                        <div class="large-12 columns">
-                            <input type="text" placeholder="Enter Line 1" name="line1" id="line1" onblur="validateName(name, 5)"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="large-12 columns">
-                            <input type="text" placeholder="Enter Line 2" name="line2" id="line2" onblur="validateName(name, 7)"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="large-12 columns">
-                            <input type="text" placeholder="Enter Line 3" name="line3" id="line3" onblur="validateName(name, 5)"/>
-                        </div>
-                    </div>
-                    <input type="submit" class="button" id="submit" name="submit" value="Submit" />
-                    <span id="InputError" style="display: none;">Only letters are allowed</span>
-                </fieldset>
-            </form>
-        </div>
-    </div>
 
   <script>
   document.write('<script src=' +
