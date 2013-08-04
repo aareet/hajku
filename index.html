@@ -54,25 +54,25 @@ function new_count(word) {
 
 </head>
 <body>
-    <div class="row">
-        <div class="large-12 columns">
+    <div class="row" align="center">
+        <div class="large-6 columns">
             <form action="">
                 <fieldset>
                     <div class="row">
-                        <div class="large-6 columns">
+                        <div class="large-12 columns">
                             <input type="text" placeholder="Enter Line 1" name="line1" id="line1" onblur="validateName(name, 5)"/>
                         </div>
-                        <div class="large-6 columns">
-                            <span id="line1Error" class="inline" style="display: none;">You may not have 5 syllables in this line</span>
+                    </div>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <input type="text" placeholder="Enter Line 2" name="line2" id="line2" onblur="validateName(name, 7)"/>
                         </div>
                     </div>
-                    
-                    <input type="text" placeholder="Enter Line 2" name="line2" id="line2" onblur="validateName(name, 7)" />
-                    <span id="line2Error" style="display: none;">You may not have 7 syllables in this line</span>
-                    
-                    <input type="text" placeholder="Enter Line 3" name="line3" id="line3" onblur="validateName(name, 5)" />
-                    <span id="line3Error" style="display: none;">You may not have 5 syllables in this line</span>
-
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <input type="text" placeholder="Enter Line 3" name="line3" id="line3" onblur="validateName(name, 5)"/>
+                        </div>
+                    </div>
                     <input type="submit" class="button" id="submit" name="submit" value="Submit" />
                     <span id="InputError" style="display: none;">Only letters are allowed</span>
                 </fieldset>
