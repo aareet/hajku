@@ -25,6 +25,9 @@ def submit_hajku():
             hajku[line] = str(request.form[line])
 
         hajku["created_on"] = datetime.utcnow()
+        hajku["author"] = str(request.form["author"])
+        hajku["title"] = str(request.form["title"])
+
         objectid = db.haikus.save(hajku)
         print str(objectid)
 
@@ -43,6 +46,9 @@ def view_hajku():
     for line in ["line1", "line2", "line3"]:
         haiku[line] = myhaiku[line]
         print line
+
+    haiku["author"] = myhaiku["author"] if "author" in myhaiku else None
+    haiku["title"] = myhaiku["title"] if "title" in myhaiku else None
 
     return render_template("view.html", haiku=haiku)
     #return json.dumps(myhaiku, default=json_util.default)

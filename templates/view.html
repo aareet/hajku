@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block main %}
-
     {% for line in ["line1", "line2", "line3"] %}
     	<div class="row" align="center">
     		<div class="large-12 columns">
@@ -9,4 +8,16 @@
     		</div>
     	</div>
     {% endfor %}
+	    <div class="row" align="right">
+	    	<div class="large-4 columns">
+	    		<!-- placeholder -->
+	    	</div>
+	    	<div class="large-4 columns">
+	    		<!-- placeholder -->
+	    	</div>
+			<div class="large-4 columns">
+				<span><i><p class="subheader">{{haiku["title"]}} by {{haiku["author"]}} </i></p>
+				</span>
+			</div>
+	    </div>
 {% endblock %}
