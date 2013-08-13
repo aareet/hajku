@@ -8,6 +8,7 @@
     		</div>
     	</div>
     {% endfor %}
+    {% if "title" in haiku and "author" in haiku %}
 	    <div class="row" align="right">
 	    	<div class="large-4 columns">
 	    		<!-- placeholder -->
@@ -16,8 +17,12 @@
 	    		<!-- placeholder -->
 	    	</div>
 			<div class="large-4 columns">
-				<span><i><p class="subheader">{{haiku["title"]}} by {{haiku["author"]}} </i></p>
-				</span>
+					<span><i>
+						<p class="subheader">{{haiku["title"]}} </p>
+						<p>{{haiku["author"]}}</p>
+					</i>
+					</span>
 			</div>
 	    </div>
+	{% endif %}
 {% endblock %}
