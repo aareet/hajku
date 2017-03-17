@@ -4,5 +4,5 @@ MarkupSafe==0.18
 Werkzeug==0.9.3
 gunicorn==17.5
 itsdangerous==0.22
-pymongo==2.5.2
+pymongo==3.4.0
 wsgiref==0.1.2

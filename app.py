@@ -8,7 +8,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-db = pymongo.MongoClient(os.getenv('MONGOHQ_URL')).hajku
+db = pymongo.MongoClient(os.getenv('MONGOHQ_URL')).heroku_5t0mm7j6
 
 
 @app.route('/', methods=["GET"])
