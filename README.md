@@ -8,5 +8,5 @@ I wrote this app for a high school teacher who wanted to help her schoolchildren
 
 A screenshot of the app is below:
 
-[[screenshot.png]]
+![Screenshot of the app](screenshot.png)
 
